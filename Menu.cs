@@ -6,5 +6,7 @@ namespace TheBreakfastClub
 {
     class Menu
     {
+
+    public string Name { get; set; }
     }
 }
