@@ -1,26 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Eliza\\Documents\\Grand Circus\\MidTerm\\TheBreakfastClub\\TheBreakfastClub\\TheBreakfastClub.csproj": {}
+    "C:\\Users\\manik\\OneDrive\\Desktop\\Mid Term Group Project\\TheBreakfastClub.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Eliza\\Documents\\Grand Circus\\MidTerm\\TheBreakfastClub\\TheBreakfastClub\\TheBreakfastClub.csproj": {
+    "C:\\Users\\manik\\OneDrive\\Desktop\\Mid Term Group Project\\TheBreakfastClub.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Eliza\\Documents\\Grand Circus\\MidTerm\\TheBreakfastClub\\TheBreakfastClub\\TheBreakfastClub.csproj",
+        "projectUniqueName": "C:\\Users\\manik\\OneDrive\\Desktop\\Mid Term Group Project\\TheBreakfastClub.csproj",
         "projectName": "TheBreakfastClub",
-        "projectPath": "C:\\Users\\Eliza\\Documents\\Grand Circus\\MidTerm\\TheBreakfastClub\\TheBreakfastClub\\TheBreakfastClub.csproj",
-        "packagesPath": "C:\\Users\\Eliza\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Eliza\\Documents\\Grand Circus\\MidTerm\\TheBreakfastClub\\TheBreakfastClub\\obj\\",
+        "projectPath": "C:\\Users\\manik\\OneDrive\\Desktop\\Mid Term Group Project\\TheBreakfastClub.csproj",
+        "packagesPath": "C:\\Users\\manik\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\manik\\OneDrive\\Desktop\\Mid Term Group Project\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Eliza\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\manik\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.1"
