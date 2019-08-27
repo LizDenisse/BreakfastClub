@@ -2,26 +2,16 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TheBreakfastClub
+namespace BreakfastClub
 {
     class Payment
-    {
-
-        public static void CreditCardPayment(/*string crnumber,string date,string cvv*/)
-        {
-            bool con = true;
-            
-            while (true)
-            {
-                
+    {               
                 Console.WriteLine("Please enter your credit card number: ");
                 string crnumber = Console.ReadLine();
                 char[] credit = crnumber.ToCharArray();
                 foreach (char c in credit)
                 {
-                    if (!char.IsDigit(c)) { 
-                        Console.WriteLine("You did not enter a number.Please try again");
-                    con = false; }
+
                     else
                     {
                         break;
@@ -33,6 +23,8 @@ namespace TheBreakfastClub
                     Console.WriteLine();
                 }
                 break;
+
+
                 
             }
             while (true)
@@ -82,13 +74,13 @@ namespace TheBreakfastClub
                 // Console.WriteLine($"{backofcard}");
                 break;
             }
-            
 
         }
         public static void CheckPayment()
         {
             Console.WriteLine("Please enter your check card number: ");
             string cknumber = Console.ReadLine();
+
            Console.WriteLine("Thank you");
         }
         public static void CashPayment(double amount)
@@ -98,6 +90,7 @@ namespace TheBreakfastClub
             if (price < amount)
             {
                 double a = amount - price;
+
 
                 Console.WriteLine(Math.Round(a, 2));
             }
@@ -110,9 +103,9 @@ namespace TheBreakfastClub
         public static void Taxes(double amount)
         {
             double tax = amount * (6 / 100);
-            Console.WriteLine(tax);
-            
+            Console.WriteLine(tax);          
         }
 
     }
+}
 }
