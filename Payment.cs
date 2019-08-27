@@ -5,24 +5,13 @@ using System.Text;
 namespace BreakfastClub
 {
     class Payment
-    {
-        public static void CreditCardPayment(/*string crnumber,string date,string cvv*/)
-        {
-            bool con = true;
-
-            while (true)
-            {
-
+    {               
                 Console.WriteLine("Please enter your credit card number: ");
                 string crnumber = Console.ReadLine();
                 char[] credit = crnumber.ToCharArray();
                 foreach (char c in credit)
                 {
-                    if (!char.IsDigit(c))
-                    {
-                        Console.WriteLine("You did not enter a number.Please try again");
-                        con = false;
-                    }
+
                     else
                     {
                         break;
@@ -35,9 +24,12 @@ namespace BreakfastClub
                 }
                 break;
 
+
+                
             }
             while (true)
             {
+
                 Console.WriteLine("Please enter the expiration date (enter two digits for month and four for year): ");
                 string date = Console.ReadLine();
                 char[] data = date.ToCharArray();
@@ -48,11 +40,13 @@ namespace BreakfastClub
                         Console.WriteLine("You did not enter a number.Please try again");
                         con = false;
                     }
+
                     else
                     {
                         break;
                     }
                 }
+
                 if (date.Length == 6)
                 {
                     Console.WriteLine($"{data}");
@@ -86,7 +80,8 @@ namespace BreakfastClub
         {
             Console.WriteLine("Please enter your check card number: ");
             string cknumber = Console.ReadLine();
-            Console.WriteLine("Thank you");
+
+           Console.WriteLine("Thank you");
         }
         public static void CashPayment(double amount)
         {
@@ -95,20 +90,22 @@ namespace BreakfastClub
             if (price < amount)
             {
                 double a = amount - price;
+
+
                 Console.WriteLine(Math.Round(a, 2));
             }
-            else
+            else 
             {
                 Console.WriteLine("You don`t have enough money");
-
+                
             }
         }
         public static void Taxes(double amount)
         {
             double tax = amount * (6 / 100);
-            Console.WriteLine(tax);
-
+            Console.WriteLine(tax);          
         }
+
     }
 }
 }
