@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace BreakfastClubMyVersion
+namespace BreakfastClub
 {
     public class Menu
     {

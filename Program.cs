@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TheBreakfastClub
+namespace BreakfastClub
 {
     class Program
     {
