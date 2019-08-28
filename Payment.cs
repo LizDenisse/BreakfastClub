@@ -107,9 +107,9 @@ namespace TheBreakfastClub
         {
             Console.WriteLine("How much cash do you want to insert: ");
             amount = double.Parse(Console.ReadLine());
-            if (Menu.price < amount)
+            if (price < amount)
             {
-                double a = amount - Menu.price;
+                double a = amount - price;
 
                 Console.WriteLine(Math.Round(a, 2));
             }
