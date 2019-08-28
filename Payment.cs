@@ -3,112 +3,129 @@ namespace BreakfastClubMyVersion
 {
     public class Payment
     {
-        class Payment
+        private static double price;
+        public static void CreditCardPayment(/*string crnumber,string date,string cvv*/)
         {
-            public static void CreditCardPayment(/*string crnumber,string date,string cvv*/)
+            bool con = true;
+
+            while (true)
             {
-                bool con = true;
 
-                while (true)
+                Console.WriteLine("Please enter your credit card number: ");
+                string crnumber = Console.ReadLine();
+                char[] credit = crnumber.ToCharArray();
+                foreach (char c in credit)
                 {
-
-                    Console.WriteLine("Please enter your credit card number: ");
-                    string crnumber = Console.ReadLine();
-                    char[] credit = crnumber.ToCharArray();
-                    foreach (char c in credit)
+                    if (!char.IsDigit(c))
                     {
-                        if (!char.IsDigit(c))
-                        {
-                            Console.WriteLine("You did not enter a number.Please try again");
-                            con = false;
-                        }
-                        else
-                        {
-                            break;
-                        }
-                    }
-                    if (crnumber.Length == 16)
-                    {
-                        Console.WriteLine($"{ credit}");
-                        Console.WriteLine();
-                    }
-                    break;
-
-                }
-                while (true)
-                {
-                    Console.WriteLine("Please enter the expiration date (enter two digits for month and four for year): ");
-                    string date = Console.ReadLine();
-                    char[] data = date.ToCharArray();
-                    foreach (char c in data)
-                    {
-                        if (!char.IsDigit(c))
-                        {
-                            Console.WriteLine("You did not enter a number.Please try again");
-                            con = false;
-                        }
-                        else
-                        {
-                            break;
-                        }
-                    }
-                    if (date.Length == 6)
-                    {
-                        Console.WriteLine($"{data}");
-                        Console.WriteLine();
-                    }
-                    Console.WriteLine($"{ data}");
-                    break;
-                }
-                while (true)
-                {
-                    Console.WriteLine("Please enter the number on the back of your card(cvv): ");
-                    string cvv = Console.ReadLine();
-                    char[] backofcard = cvv.ToCharArray();
-                    foreach (char c in backofcard)
-                    {
-                        if (!char.IsDigit(c))
-                            Console.WriteLine("You did not enter a number.Please try again");
+                        Console.WriteLine("You did not enter a number.Please try again");
                         con = false;
                     }
-                    if (cvv.Length == 3)
+                    else
                     {
-                        Console.WriteLine($"{backofcard}");
-                        Console.WriteLine();
+                        break;
                     }
-                    // Console.WriteLine($"{backofcard}");
-                    break;
                 }
+                if (crnumber.Length == 16)
+                {
+                    Console.WriteLine($"{ credit}");
+                    Console.WriteLine();
+                }
+                break;
 
             }
-            public static void CheckPayment()
+            while (true)
+            {
+
+                Console.WriteLine("Please enter the expiration date (enter two digits for month and four for year): ");
+                string date = Console.ReadLine();
+                char[] data = date.ToCharArray();
+                foreach (char c in data)
+                {
+                    if (!char.IsDigit(c))
+                    {
+                        Console.WriteLine("You did not enter a number.Please try again");
+                        con = false;
+                    }
+
+                    else
+                    {
+                        break;
+                    }
+                }
+
+                if (date.Length == 6)
+                {
+                    Console.WriteLine($"{data}");
+                    Console.WriteLine();
+                }
+                Console.WriteLine($"{ data}");
+                break;
+            }
+            while (true)
+            {
+                Console.WriteLine("Please enter the number on the back of your card(cvv): ");
+                string cvv = Console.ReadLine();
+                char[] backofcard = cvv.ToCharArray();
+                foreach (char c in backofcard)
+                {
+                    if (!char.IsDigit(c))
+                        Console.WriteLine("You did not enter a number.Please try again");
+                    con = false;
+                }
+                if (cvv.Length == 3)
+                {
+                    Console.WriteLine($"{backofcard}");
+                    Console.WriteLine();
+                }
+                // Console.WriteLine($"{backofcard}");
+                break;
+            }
+
+
+        }
+        public static void CheckPayment()
+        {
+            bool con = true;
+            while (true)
             {
                 Console.WriteLine("Please enter your check card number: ");
                 string cknumber = Console.ReadLine();
-                Console.WriteLine("Thank you");
-            }
-            public static void CashPayment(double amount)
-            {
-                Console.WriteLine("How much cash do you want to insert: ");
-                amount = double.Parse(Console.ReadLine());
-                if (price < amount)
+                char[] checkno = cknumber.ToCharArray();
+                foreach (char c in checkno)
                 {
-                    double a = amount - price;
-                    Console.WriteLine(Math.Round(a, 2));
+                    if (!char.IsDigit(c))
+                        Console.WriteLine("You did not enter a number.Please try again");
+                    con = false;
                 }
-                else
-                {
-                    Console.WriteLine("You don`t have enough money");
+            }
+            // Console.WriteLine("Thank you");
 
-                }
-            }
-            public static void Taxes(double amount)
+        }
+        public static void CashPayment(double amount)
+        {
+            Console.WriteLine("How much cash do you want to insert: ");
+            amount = double.Parse(Console.ReadLine());
+            if (Menu.price < amount)
             {
-                double tax = amount * (6 / 100);
-                Console.WriteLine(tax);
+                double a = amount - Menu.price;
+
+                Console.WriteLine(Math.Round(a, 2));
+            }
+            else
+            {
+                Console.WriteLine("You don`t have enough money");
 
             }
         }
+        public static void Taxes(double amount)
+        {
+            double tax = amount * (6 / 100);
+            Console.WriteLine(tax);
+
+        }
+
     }
 }
-}
+
+
