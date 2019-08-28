@@ -85,11 +85,23 @@ namespace TheBreakfastClub
             
 
         }
-        public static void CheckPayment()
+       public static void CheckPayment()
         {
-            Console.WriteLine("Please enter your check card number: ");
-            string cknumber = Console.ReadLine();
-           Console.WriteLine("Thank you");
+            bool con = true;
+            while (true)
+            {
+                Console.WriteLine("Please enter your check card number: ");
+                string cknumber = Console.ReadLine();
+                char[] checkno = cknumber.ToCharArray();
+                foreach (char c in checkno)
+                {
+                 if (!char.IsDigit(c))
+                 Console.WriteLine("You did not enter a number.Please try again");
+                 con = false;
+                }
+            }
+           // Console.WriteLine("Thank you");
+           
         }
         public static void CashPayment(double amount)
         {
