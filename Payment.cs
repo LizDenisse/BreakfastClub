@@ -4,9 +4,9 @@ using System.Text;
 
 namespace TheBreakfastClub
 {
-    class Payment
+   public class Payment
     {
-
+        private static double price;
         public static void CreditCardPayment(/*string crnumber,string date,string cvv*/)
         {
             bool con = true;
