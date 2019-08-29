@@ -1,8 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections;
+
 namespace TheBreakfastClub
 {
+    
     public class Order
     {
+        public double total { get; set; }
         List<Menu> order = new List<Menu>();
 
         public Order()
@@ -12,7 +17,7 @@ namespace TheBreakfastClub
         }
 
 
-        public void PrintMenu(List<Menu> menus)
+        private void PrintMenu(List<Menu> menus)
         {
             int i = 0;
             foreach (Menu n in menus)
@@ -22,15 +27,21 @@ namespace TheBreakfastClub
             }
         }
 
-        public void ItemDescription(List<Menu> item, int index)
+
+        private void ItemDescription(List<Menu> item, int index)
         {
             Menu i = item[index];
             Console.WriteLine(i.Description);
         }
 
-        public void quantity(Menu item)
+        private double Quantity(int index, List<Menu> item, int amount)
         {
 
+            Menu i = item[index];
+
+           total = i.Price * amount;
+
+            return total;
         }
 
 

@@ -1,7 +1,7 @@
 ﻿<Properties StartupConfiguration="{AB60859A-7680-415E-9767-C5CD305C6786}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Menu.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Payment.cs">
     <Files>
-      <File FileName="Payment.cs" Line="47" Column="12" />
+      <File FileName="Payment.cs" Line="64" Column="30" />
       <File FileName="Program.cs" Line="2" Column="19" />
       <File FileName="Order.cs" Line="10" Column="74" />
       <File FileName="Menu.cs" Line="5" Column="13" />
@@ -12,14 +12,9 @@
           <Node name="TheBreakfastClub" expanded="True">
             <Node name="TheBreakfastClub" expanded="True">
               <Node name="Dependencies" expanded="True" />
-              <Node name="Menu.cs" selected="True" />
+              <Node name="Payment.cs" selected="True" />
             </Node>
           </Node>
-        </State>
-      </Pad>
-      <Pad Id="ClassPad">
-        <State name="__root__">
-          <Node name="TheBreakfastClub" expanded="True" selected="True" />
         </State>
       </Pad>
     </Pads>
