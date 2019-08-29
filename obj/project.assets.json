@@ -694,11 +694,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/jamesdockery/BreakfastClub/TheBreakfastClub.csproj",
+      "projectUniqueName": "/Users/jamesdockery/Desktop/GCMidtermBreakClub/BreakfastClub/TheBreakfastClub.csproj",
       "projectName": "TheBreakfastClub",
-      "projectPath": "/Users/jamesdockery/BreakfastClub/TheBreakfastClub.csproj",
+      "projectPath": "/Users/jamesdockery/Desktop/GCMidtermBreakClub/BreakfastClub/TheBreakfastClub.csproj",
       "packagesPath": "/Users/jamesdockery/.nuget/packages/",
-      "outputPath": "/Users/jamesdockery/BreakfastClub/obj/",
+      "outputPath": "/Users/jamesdockery/Desktop/GCMidtermBreakClub/BreakfastClub/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
