@@ -31,10 +31,14 @@ namespace BreakfastClub
             {
                 Console.WriteLine($"{i++}) {BreakfastMenu[i].Name} + {BreakfastMenu[i].price}");
             }
+            Console.WriteLine("Your total is:");
+
+            Console.WriteLine("Your total with 6% tax is:");
         }
 
         public void Checkout()
         {
+
             PrintMenu();
             Console.WriteLine("How would you like to pay?");
             Console.WriteLine("1: Credit/Debit Card");
