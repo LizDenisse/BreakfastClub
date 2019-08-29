@@ -3,8 +3,7 @@ namespace BreakfastClubMyVersion
 {
     public class Payment
     {
-        class Payment
-        {
+        
             public static void CreditCardPayment(/*string crnumber,string date,string cvv*/)
             {
                 bool con = true;
@@ -109,6 +108,6 @@ namespace BreakfastClubMyVersion
 
             }
         }
-    }
+    
 }
-}
+
