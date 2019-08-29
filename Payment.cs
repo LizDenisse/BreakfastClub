@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TheBreakfastClub
 {
-    public static void CreditCardPayment(/*string crnumber,string date,string cvv*/)
+   public static void CreditCardPayment(/*string crnumber,string date,string cvv*/)
             {
                 bool con = true;
 
@@ -38,7 +38,7 @@ namespace TheBreakfastClub
                        continue;
                      }
 
-                break;
+                 break;
                 }
                 while (con)
                 {
@@ -67,7 +67,7 @@ namespace TheBreakfastClub
                     Console.WriteLine($"{ data}");
                     continue;
                      }
-                break;
+                  break;
                 }
                 while (con)
                 {
@@ -147,6 +147,7 @@ namespace TheBreakfastClub
                 Console.WriteLine(tax);
 
             }
+  
       }
     
 }
