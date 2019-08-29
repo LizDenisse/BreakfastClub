@@ -9,97 +9,29 @@ namespace BreakfastClub
         public string Name { get; set; }
         public string Category { get; set; }
         public string Description { get; set; }
-        public double price { get; set; }
+        public double Price { get; set; }
 
+        public Menu(string name, string description, String category, double price)
+        {
+            this.Name = name;
+            this.Description = description;
+            this.Price = price;
+            this.Category = category;
+        }
         static public List<Menu> MenuItems()
         {
-            Menu item1 = new Menu()
-            {
-                Name = "Awesome Avocado ",
-                Category = "Omellet",
-                Description = "Stuffed with ripe avocado, lean turnkey bacon, bell pepper, a blend of Monterey Jack and Cheddar cheeses. Served with our homemade salsa.",
-                price = 13.50
-            };
-
-            Menu Item2 = new Menu()
-            {
-                Name = "VEGGIE DELIGHT ",
-                Category = "",
-                Description = "",
-                price = 10.30
-            };
-            Menu Item3 = new Menu()
-            {
-                Name = "LEAN & GREEN",
-                Category = "",
-                Description = "",
-                price = 13.00
-            };
-            Menu Item4 = new Menu()
-            {
-                Name = "CHICKEN FAJITA ",
-                Category = "",
-                Description = "",
-                price = 0
-            };
-            Menu Item5 = new Menu()
-            {
-                Name = "JUMP START BREAKFAST SANDWICH ",
-                Category = "",
-                Description = "",
-                price = 0
-            };
-            Menu Item6 = new Menu()
-            {
-                Name = "The Helthier English ",
-                Category = "",
-                Description = "",
-                price = 0
-            };
-            Menu Item7 = new Menu()
-            {
-                Name = "The Happy American ",
-                Category = "",
-                Description = "",
-                price = 0
-            };
-            Menu Item8 = new Menu()
-            {
-                Name = "Pancakes ",
-                Category = "",
-                Description = "",
-                price = 0
-            };
-            Menu Item9 = new Menu()
-            {
-                Name = "Parfait ",
-                Category = "",
-                Description = "",
-                price = 0
-            };
-            Menu Item10 = new Menu()
-            {
-                Name = "Tea ",
-                Category = "",
-                Description = "",
-                price = 0
-            };
-
-            Menu Item11 = new Menu()
-            {
-                Name = "Orange Juice ",
-                Category = "",
-                Description = "",
-                price = 0
-            };
-
-            Menu Item12 = new Menu()
-            {
-                Name = "Coffee ",
-                Category = "",
-                Description = "",
-                price = 0
-            };
+            Menu item1 = new Menu("Awesome Avocado", "Omellet", "", 0);
+            Menu Item2 = new Menu("Veggie Delight  ", "Omellet", "", 10.30);
+            Menu Item3 = new Menu("LEAN & GREEN", "Omellet", "", 13.00);
+            Menu Item4 = new Menu("CHICKEN FAJITA ", "Fajita", "", 0);
+            Menu Item5 = new Menu("JUMP START BREAKFAST SANDWICH ", "Sandwhich", "", 0);
+            Menu Item6 = new Menu("The healthier English", "English Muffin", "", 0);
+            Menu Item7 = new Menu("The happy American", "Snadwhich", "", 0);
+            Menu Item8 = new Menu("Pancakes", "Buttermilk Pancakes", "", 0);
+            Menu Item9 = new Menu("Parfait", "Yogurt", "", 0);
+            Menu Item10 = new Menu("Tea", "Hot Tea", "", 0);
+            Menu Item11 = new Menu("Orange Juice", "Cold Orange Juice", "", 0);
+            Menu Item12 = new Menu("Coffee", "Dark Roasted Coffee", "", 0);
 
 
             List<Menu> menu = new List<Menu>();
@@ -121,22 +53,14 @@ namespace BreakfastClub
 
 
         }
+        public override string ToString()
+        {
 
-
-
-        //public void PrintMenu()
-
-        //{
-        //    var items = Menu.MenuItems();
-        //    var i = 0;
-
-        //    foreach (var item in items)
-        //    {
-        //        Console.WriteLine(i+""+item);
-        //        i++;
-        //    }
-        //}
-
+            return "Iem" + ":" + Name +
+                Description +
+                Category +
+                Price;
+        }
 
     }
 }
