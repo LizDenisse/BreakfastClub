@@ -4,7 +4,11 @@ using System.Text;
 
 namespace TheBreakfastClub
 {
-   public static void CreditCardPayment(/*string crnumber,string date,string cvv*/)
+        public class Payment
+    {
+
+    
+            public static void CreditCardPayment(/*string crnumber,string date,string cvv*/)
             {
                 bool con = true;
 
@@ -132,7 +136,7 @@ namespace TheBreakfastClub
                 amount = double.Parse(Console.ReadLine());
                 if (Orders.price < amount)
                 {
-                    double a = amount - price;
+                    double a = amount - Orders.price;
                     Console.WriteLine(Math.Round(a, 2));
                 }
                 else
@@ -148,7 +152,7 @@ namespace TheBreakfastClub
 
             }
   
-      }
+        }
     
 }
 
