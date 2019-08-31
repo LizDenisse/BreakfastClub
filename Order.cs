@@ -1,49 +1,89 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Threading;
 using System.Collections;
+using System.Collections.Generic;
+
 
 namespace TheBreakfastClub
 {
-    
+
     public class Order
     {
-        public double total { get; set; }
-        List<Menu> order = new List<Menu>();
-
-        public Order()
+        List<Menu> menus = Menu.MenuItems();
+        List<Menu> cart = new List<Menu>();
+        public double Total
         {
-            Console.WriteLine("Hello User! Welcome to the Breakfast Club!");
-            Console.WriteLine("Have a look at our menu!");
-        }
-
-
-        private void PrintMenu(List<Menu> menus)
-        {
-            int i = 0;
-            foreach (Menu n in menus)
+            get
             {
-
-                Console.WriteLine(i++ + " " + n.Name);
+                return Total;
+            }
+            set
+            {
+                foreach (Menu n in cart)
+                {
+                    Total = +n.Price;
+                }
             }
         }
 
 
-        private void ItemDescription(List<Menu> item, int index)
-        {
-            Menu i = item[index];
-            Console.WriteLine(i.Description);
-        }
 
-        private double Quantity(int index, List<Menu> item, int amount)
+
+        public Order()
         {
 
-            Menu i = item[index];
-
-           total = i.Price * amount;
-
-            return total;
         }
+
+        public void Cart(Menu m)
+        {
+
+            Console.WriteLine("Ok! adding that item to the list");
+
+            cart.Add(m);
+
+        }
+
+        public void PrintCart()
+        {
+            foreach(Menu n in cart)
+            {
+                Console.WriteLine("Your cart below!");
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.WriteLine();
+
+                Console.WriteLine(n.Name + " \t " + n.Price);
+
+            } 
+           
+        }
+
+
+        public void PrintMenu()
+        {
+            int i = 0;
+            foreach (var n in menus)
+            {
+                i++;
+                Console.WriteLine(i + "." + n.Name + " \t " + n.Price);
+
+            }
+            
+        }
+
+
+
+
+
+
+        public class MenuOrder
+        {
+            public object OrderName { get; set; }
+            public object OrderPrice { get; set; }
+        }
+
 
 
     }
 }
+

@@ -1,0 +1,11 @@
+/Users/jamesdockery/Desktop/GCMidtermBreakClub/BreakfastClub/obj/Debug/netcoreapp2.1/TheBreakfastClub.csprojAssemblyReference.cache
+/Users/jamesdockery/Desktop/GCMidtermBreakClub/BreakfastClub/obj/Debug/netcoreapp2.1/TheBreakfastClub.csproj.CoreCompileInputs.cache
+/Users/jamesdockery/Desktop/GCMidtermBreakClub/BreakfastClub/obj/Debug/netcoreapp2.1/TheBreakfastClub.AssemblyInfoInputs.cache
+/Users/jamesdockery/Desktop/GCMidtermBreakClub/BreakfastClub/obj/Debug/netcoreapp2.1/TheBreakfastClub.AssemblyInfo.cs
+/Users/jamesdockery/Desktop/GCMidtermBreakClub/BreakfastClub/bin/Debug/netcoreapp2.1/TheBreakfastClub.deps.json
+/Users/jamesdockery/Desktop/GCMidtermBreakClub/BreakfastClub/bin/Debug/netcoreapp2.1/TheBreakfastClub.runtimeconfig.json
+/Users/jamesdockery/Desktop/GCMidtermBreakClub/BreakfastClub/bin/Debug/netcoreapp2.1/TheBreakfastClub.runtimeconfig.dev.json
+/Users/jamesdockery/Desktop/GCMidtermBreakClub/BreakfastClub/bin/Debug/netcoreapp2.1/TheBreakfastClub.dll
+/Users/jamesdockery/Desktop/GCMidtermBreakClub/BreakfastClub/bin/Debug/netcoreapp2.1/TheBreakfastClub.pdb
+/Users/jamesdockery/Desktop/GCMidtermBreakClub/BreakfastClub/obj/Debug/netcoreapp2.1/TheBreakfastClub.dll
+/Users/jamesdockery/Desktop/GCMidtermBreakClub/BreakfastClub/obj/Debug/netcoreapp2.1/TheBreakfastClub.pdb
