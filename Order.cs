@@ -11,20 +11,8 @@ namespace TheBreakfastClub
     {
         List<Menu> menus = Menu.MenuItems();
         List<Menu> cart = new List<Menu>();
-        public double Total
-        {
-            get
-            {
-                return Total;
-            }
-            set
-            {
-                foreach (Menu n in cart)
-                {
-                    Total = +n.Price;
-                }
-            }
-        }
+      public double Total { get; set; }
+        
 
 
 
@@ -32,6 +20,15 @@ namespace TheBreakfastClub
         public Order()
         {
 
+        }
+        public double total()
+        {
+          
+            foreach(Menu c in cart)
+            {
+                Total = Total + c.Price;
+            }
+            return Total;
         }
 
         public void Cart(Menu m)
@@ -45,17 +42,19 @@ namespace TheBreakfastClub
 
         public void PrintCart()
         {
-            foreach(Menu n in cart)
+            Console.WriteLine("Your cart below!");
+            foreach (Menu n in cart)
             {
-                Console.WriteLine("Your cart below!");
                 Console.WriteLine();
                 Console.WriteLine();
                 Console.WriteLine();
 
+                
+              
                 Console.WriteLine(n.Name + " \t " + n.Price);
-
-            } 
+            }
            
+            
         }
 
 
