@@ -6,8 +6,7 @@ namespace BreakfastClub
     {
         static void Main(string[] args)
         {
-            BreakfastClubApp breakfast = new BreakfastClubApp();
-            breakfast.Run();
+            BreakfastClubApp breakfastclub = new BreakfastClubApp();
         }
     }
 }

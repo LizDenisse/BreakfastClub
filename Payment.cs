@@ -1,131 +1,109 @@
-//using System;
-//namespace BreakfastClubMyVersion
-//{
-//    public class Payment
-//    {
-//        private static double price;
-//        public static void CreditCardPayment(/*string crnumber,string date,string cvv*/)
-//        {
-//            bool con = true;
+using System;
 
-//            while (true)
-//            {
-
-//                Console.WriteLine("Please enter your credit card number: ");
-//                string crnumber = Console.ReadLine();
-//                char[] credit = crnumber.ToCharArray();
-//                foreach (char c in credit)
-//                {
-//                    if (!char.IsDigit(c))
-//                    {
-//                        Console.WriteLine("You did not enter a number.Please try again");
-//                        con = false;
-//                    }
-//                    else
-//                    {
-//                        break;
-//                    }
-//                }
-//                if (crnumber.Length == 16)
-//                {
-//                    Console.WriteLine($"{ credit}");
-//                    Console.WriteLine();
-//                }
-//                break;
-
-//            }
-//            while (true)
-//            {
-
-//                Console.WriteLine("Please enter the expiration date (enter two digits for month and four for year): ");
-//                string date = Console.ReadLine();
-//                char[] data = date.ToCharArray();
-//                foreach (char c in data)
-//                {
-//                    if (!char.IsDigit(c))
-//                    {
-//                        Console.WriteLine("You did not enter a number.Please try again");
-//                        con = false;
-//                    }
-
-//                    else
-//                    {
-//                        break;
-//                    }
-//                }
-
-//                if (date.Length == 6)
-//                {
-//                    Console.WriteLine($"{data}");
-//                    Console.WriteLine();
-//                }
-//                Console.WriteLine($"{ data}");
-//                break;
-//            }
-//            while (true)
-//            {
-//                Console.WriteLine("Please enter the number on the back of your card(cvv): ");
-//                string cvv = Console.ReadLine();
-//                char[] backofcard = cvv.ToCharArray();
-//                foreach (char c in backofcard)
-//                {
-//                    if (!char.IsDigit(c))
-//                        Console.WriteLine("You did not enter a number.Please try again");
-//                    con = false;
-//                }
-//                if (cvv.Length == 3)
-//                {
-//                    Console.WriteLine($"{backofcard}");
-//                    Console.WriteLine();
-//                }
-//                // Console.WriteLine($"{backofcard}");
-//                break;
-//            }
+namespace BreakfastClub
+{
+    public class Payment
+    {
 
 
-//        }
-//        public static void CheckPayment()
-//        {
-//            bool con = true;
-//            while (true)
-//            {
-//                Console.WriteLine("Please enter your check card number: ");
-//                string cknumber = Console.ReadLine();
-//                char[] checkno = cknumber.ToCharArray();
-//                foreach (char c in checkno)
-//                {
-//                    if (!char.IsDigit(c))
-//                        Console.WriteLine("You did not enter a number.Please try again");
-//                    con = false;
-//                }
-//            }
-//            // Console.WriteLine("Thank you");
+        public static void CreditCardPaymentNumber(/*string crnumber,string date,string cvv*/)
+        {
+            bool con = true;
+            while (con)
+            {
+                Console.WriteLine("Please enter your credit card number: ");
+                decimal crnumber = decimal.Parse(Console.ReadLine());
+                string crnumberstring = crnumber.ToString();
+                if (crnumberstring.Length != 16)
+                {
+                    Console.WriteLine("You did not enter a valid credit card number.Please try again");
+                    con = true;
 
-//        }
-//        public static void CashPayment(double amount)
-//        {
-//            Console.WriteLine("How much cash do you want to insert: ");
-//            amount = double.Parse(Console.ReadLine());
-//            if (Menu.price < amount)
-//            {
-//                double a = amount - Menu.price;
+                }
+                else
+                {
+                    Console.WriteLine("Thank you!");
+                    // Console.WriteLine($"{crnumber}");
+                    con = false;
+                }
+            }
+        }
+        public static void GetCreditCardDate()
+        {
+            bool con = true;
+            while (con)
+            {
+                Console.WriteLine("Please enter the expiration date (enter two digits for month and four for year): ");
+                int date = int.Parse(Console.ReadLine());
+                string datestring = date.ToString();
+                string substring1 = datestring.Substring(0, 2);
+                int datesubstring1 = Int32.Parse(substring1);
+                string substring2 = datestring.Substring(2);
+                int datesubstring2 = Int32.Parse(substring2);
 
-//                Console.WriteLine(Math.Round(a, 2));
-//            }
-//            else
-//            {
-//                Console.WriteLine("You don`t have enough money");
+                if (datestring.Length != 6 || datesubstring1 > 12 || datesubstring2 > 3000 || datesubstring2 < 1900 || datesubstring1 < 0)
+                {
+                    Console.WriteLine("You did not enter a valid date.Please try again");
+                    con = true;
+                }
+                else
+                {
+                    Console.WriteLine("Thank you!");
+                    con = false;
+                }
+            }
+        }
+        public static void Getcreditcardcvv()
+        {
+            bool con = true;
+            while (con)
+            {
+                Console.WriteLine("Please enter the number on the back of your card(cvv): ");
+                int cvv = int.Parse(Console.ReadLine());
+                string cvvstring = cvv.ToString();
+                if (cvvstring.Length != 3)
+                {
+                    Console.WriteLine("You did not enter a cvv number.Please try again");
+                    con = true;
+                }
+                else
+                {
+                    Console.WriteLine("Thank you");
+                    Console.WriteLine("We have received your payment.Thank you for your business");
+                    con = false;
+                    break;
+                }
+            }
+        }
+        public static void CheckPayment()
+        {
 
-//            }
-//        }
-//        public static void Taxes(double amount)
-//        {
-//            double tax = amount * (6 / 100);
-//            Console.WriteLine(tax);
+            Console.WriteLine("Please enter your check card number: ");
+            decimal cknumber = decimal.Parse(Console.ReadLine());
+            Console.WriteLine("Thank you");
 
-//        }
+        }
+        public static void CashPayment(double amount)
+        {
+            Console.WriteLine("How much cash do you want to insert: ");
+            amount = double.Parse(Console.ReadLine());
+            Order totalprice = new Order();
+            double checktotal = totalprice.Total;
+            if (checktotal < amount)
+            {
+                double a = amount - checktotal;
+                Console.WriteLine(Math.Round(a, 2));
+            }
+            else
+            {
+                Console.WriteLine("You don`t have enough money");
 
-//    }
-//}
+            }
+        }
 
 
+
+
+    }
+
+}

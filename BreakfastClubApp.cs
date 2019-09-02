@@ -7,17 +7,12 @@ namespace BreakfastClub
     class BreakfastClubApp
     {
 
-        //List<Menu> BreakfastMenu { get; set; }
-        //public Menu menu;
-        //public Order takeorder;
-        //public Payment {get; set}
-
 
         public BreakfastClubApp()
         {
             Console.WriteLine("Welcome to the Breakfast Club.");
-
-
+            // Run();
+            Checkout();
         }
 
 
@@ -53,82 +48,60 @@ namespace BreakfastClub
                 {
                     order.PrintCart();
                     Console.WriteLine("You have ordered:");
+
                     Console.WriteLine(order.Total);
                     ordercont = false;
                 }
 
 
-                Console.WriteLine("Ok, How would you like to pay?");
-                Console.WriteLine("1: Credit/Debit Card");
-                Console.WriteLine("2: Check");
-                Console.WriteLine("3: Cash");
-                string pay = Console.ReadLine().Trim().ToLower();
-
-                if (pay == "Credit/Debit" || pay == "1")
-                {
-                    Console.WriteLine();
-                }
-
-                else if (pay == "Check" || pay == "2")
-                {
-                    Console.WriteLine();
-
-
-                }
-                else if (pay == "Cash" || pay == "3")
-                {
-                    Console.WriteLine();
-
-
-                }
-                else
-                {
-                    Console.WriteLine("Please leave your information and fill-up pay later form!");
-                }
 
             }
 
 
+
         }
 
-        //public void NewOrder()
-        //{
-        //    bool run = true;
-        //    do
-        //    {
-        //        Console.WriteLine();
-        //        GetOrder();
-        //        Console.WriteLine("Take New order? Y/N");
-        //        string neworder = Console.ReadLine().ToLower().Trim();
-        //        Console.Clear();
+        public void Checkout()
+        {
+            Console.WriteLine("Ok, How would you like to pay?");
+            Console.WriteLine("1: Credit/Debit Card");
+            Console.WriteLine("2: Check");
+            Console.WriteLine("3: Cash");
+            string pay = Console.ReadLine().Trim().ToLower();
 
-        //        if (neworder == "n" || neworder == "No")
-        //        {
-        //            run = false;
-        //        }
-        //    }
-        //    while (run);
+            if (pay == "Credit/Debit" || pay == "1")
+            {
+                Console.WriteLine();
+                Payment.CreditCardPaymentNumber();
+                Payment.GetCreditCardDate();
+                Payment.Getcreditcardcvv();
+
+            }
+
+            else if (pay == "Check" || pay == "2")
+            {
+                Console.WriteLine();
+                Payment.CheckPayment();
 
 
-        //}
+            }
+            else if (pay == "Cash" || pay == "3")
+            {
+                Console.WriteLine();
+                Payment.CashPayment(12);
+
+
+            }
+            else
+            {
+                Console.WriteLine("Please leave your information and fill-up pay later form!");
+            }
+        }
+
+
     }
 
-    //public void PrintMenu()
-    //{
-    //    Console.WriteLine("Your orders are:");
-    //    for (int i = 0; i < BreakfastMenu.Count; i++)
-    //    {
-    //        Console.WriteLine($"{i++}) {BreakfastMenu[i].Name} + {BreakfastMenu[i].price}");
-    //    }
-    //    Console.WriteLine("Your total is:");
 
-    //    Console.WriteLine("Your total with 6% tax is:");
-    //}
-
-    //public void Checkout()
-    //{
-
-    //    PrintMenu();
 
 }
 
