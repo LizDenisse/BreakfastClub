@@ -45,7 +45,7 @@ namespace TheBreakfastClub
                 {
                     order.PrintCart();
                     Console.WriteLine("This is your cart to go!");
-                    Console.WriteLine( "Total: " + order.total());
+                    Console.WriteLine( "Total: " + order.GetTotal());
                     break;
                 }
             }

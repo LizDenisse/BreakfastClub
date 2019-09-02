@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Collections;
 using System.Collections.Generic;
-
+using System.Linq;
 
 namespace TheBreakfastClub
 {
@@ -21,13 +21,16 @@ namespace TheBreakfastClub
         {
 
         }
-        public double total()
+        public double GetTotal()
         {
-          
-            foreach(Menu c in cart)
-            {
-                Total = Total + c.Price;
-            }
+
+            /* foreach(Menu c in cart)
+             {
+                 Total = Total + c.Price;
+             }
+             return Total;*/
+
+             Total = cart.Sum(cart => cart.Price);
             return Total;
         }
 

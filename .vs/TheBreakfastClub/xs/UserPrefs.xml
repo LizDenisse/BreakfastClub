@@ -2,10 +2,10 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="Order.cs">
     <Files>
       <File FileName="Program.cs" Line="18" Column="1" />
-      <File FileName="Order.cs" Line="21" Column="10" />
+      <File FileName="Order.cs" Line="87" Column="1" />
       <File FileName="Menu.cs" Line="57" Column="14" />
-      <File FileName="BreakfastApp.cs" Line="48" Column="67" />
-      <File FileName="Payment.cs" Line="105" Column="1" />
+      <File FileName="BreakfastApp.cs" Line="61" Column="80" />
+      <File FileName="Payment.cs" Line="80" Column="18" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -13,17 +13,6 @@
           <Node name="TheBreakfastClub" expanded="True">
             <Node name="TheBreakfastClub" expanded="True">
               <Node name="Order.cs" selected="True" />
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-      <Pad Id="ClassPad">
-        <State name="__root__">
-          <Node name="TheBreakfastClub" expanded="True">
-            <Node name="TheBreakfastClub" expanded="True">
-              <Node name="TheBreakfastClub" expanded="True">
-                <Node name="TheBreakfastClub.Order.MenuOrder" selected="True" />
-              </Node>
             </Node>
           </Node>
         </State>
