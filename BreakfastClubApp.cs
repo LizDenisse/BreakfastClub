@@ -53,44 +53,37 @@ namespace BreakfastClub
                     ordercont = false;
                 }
 
-
-
             }
-
-
 
         }
 
         public void Checkout()
         {
             Console.WriteLine("Ok, How would you like to pay?");
+            Console.WriteLine("Please select a payment method (1-3)");
             Console.WriteLine("1: Credit/Debit Card");
             Console.WriteLine("2: Check");
             Console.WriteLine("3: Cash");
+            Console.WriteLine();
             string pay = Console.ReadLine().Trim().ToLower();
 
             if (pay == "Credit/Debit" || pay == "1")
             {
-                Console.WriteLine();
+                Console.WriteLine("Cradit/Debit Card Payment:");
                 Payment.CreditCardPaymentNumber();
                 Payment.GetCreditCardDate();
                 Payment.Getcreditcardcvv();
-
             }
 
             else if (pay == "Check" || pay == "2")
             {
-                Console.WriteLine();
+                Console.WriteLine("Check Payment:");
                 Payment.CheckPayment();
-
-
             }
             else if (pay == "Cash" || pay == "3")
             {
-                Console.WriteLine();
+                Console.WriteLine("Cash Payment:");
                 Payment.CashPayment(12);
-
-
             }
             else
             {
