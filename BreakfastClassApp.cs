@@ -58,7 +58,8 @@ namespace BreakfastClub
                 if (pay == "Credit/Debit" || pay == "1")
                 {
                     Payment.Creditcardnumber();
-                    Payment.Creditcarddate()
+                    Payment.Creditcarddate();
+                    Payment.Creditcardcvv();
                 }
 
                 else if (pay == "Check" || pay == "2")
