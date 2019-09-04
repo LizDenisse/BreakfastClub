@@ -35,23 +35,34 @@ namespace BreakfastClub
         }
         public void PrintCart()
         {
-            double total = cart.Sum(cart => cart.OrderPrice);
+            double SubTotal = cart.Sum(x => x.OrderPrice);
+            double SalesTax = SubTotal * 0.07;
 
-            Console.WriteLine("\n Cart Total: " + total.ToString("C2", CultureInfo.CurrentCulture));
-            Console.WriteLine("________________________________");
+            double grandTotal = SubTotal + SalesTax;
+
+       
             int i = 0;
             foreach (var item in cart)
             {
                 i++;
                 Console.WriteLine(i + "." + item.OrderName + "\t" + item.OrderPrice);
             }
+            Console.WriteLine("________________________________");
+            Console.WriteLine("\n Sub Total: " + SubTotal.ToString("C2", CultureInfo.CurrentCulture));
+            Console.WriteLine("\n Tax: " + SalesTax.ToString("C2", CultureInfo.CurrentCulture));
+            Console.WriteLine("\n Grand Total: " + grandTotal.ToString("C2", CultureInfo.CurrentCulture));
+            Console.WriteLine("________________________________");
         }
         public double GetTotal()
         {
 
-            double Total = cart.Sum(cart => cart.OrderPrice);
+             double SubTotal = cart.Sum(x => x.OrderPrice);
+            double SalesTax = SubTotal * 0.07;
 
-            return Total;
+            double grandTotal = SubTotal + SalesTax;
+
+
+            return grandTotal;
 
         }
 
