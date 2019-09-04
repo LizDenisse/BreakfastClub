@@ -13,7 +13,7 @@ namespace TheBreakfastClub
             bool con = true;
             while (con)
             {
-                Console.WriteLine("Please enter your credit card number: ");
+                Console.WriteLine("Please enter your 16-digit credit card number: ");
                 decimal crnumber = decimal.Parse(Console.ReadLine());
                 string crnumberstring = crnumber.ToString();
                 if (crnumberstring.Length != 16)
@@ -60,7 +60,7 @@ namespace TheBreakfastClub
             bool con = true;
             while (con)
             {
-                Console.WriteLine("Please enter the number on the back of your card(cvv): ");
+                Console.WriteLine("Please enter the 3-digit number on the back of your card(cvv): ");
                 int cvv = int.Parse(Console.ReadLine());
                 string cvvstring = cvv.ToString();
                 if (cvvstring.Length != 3)
