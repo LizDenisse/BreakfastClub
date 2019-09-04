@@ -85,10 +85,10 @@ namespace TheBreakfastClub
                      Console.WriteLine("Thank you");
                  
          }
-             public static void CashPayment(double amount)
+             public static void CashPayment()
              {
                  Console.WriteLine("How much cash do you want to insert: ");
-                 amount = double.Parse(Console.ReadLine());
+                double amount = double.Parse(Console.ReadLine());
                  Order totalprice = new Order();
                  double checktotal = totalprice.Total;
                  if (checktotal < amount)
