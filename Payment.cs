@@ -1,14 +1,22 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
+using System.Globalization;
 
-namespace TheBreakfastClub
+namespace BreakfastClub
 {
-        public class Payment
+    public class MenuItem
     {
+        public string OrderName;
+        public double OrderPrice;
+    }
+    public class Payment
+    {
+        List<Menu> menus = Menu.MenuItems();
+        List<MenuItem> cart = new List<MenuItem>();
 
-    
-            public static void CreditCardPaymentNumber(/*string crnumber,string date,string cvv*/)
+        public void CreditCardPaymentNumber(/*string crnumber,string date,string cvv*/)
         {
             bool con = true;
             while (con)
@@ -18,23 +26,21 @@ namespace TheBreakfastClub
                 string crnumberstring = crnumber.ToString();
                 if (crnumberstring.Length != 16)
                 {
-                    Console.WriteLine("You did not enter a valid credit card number.Please try again");
+                    Console.WriteLine("You did not enter a valid credit card number. Please try again");
                     con = true;
-
                 }
                 else
                 {
                     Console.WriteLine("Thank you!");
-                    // Console.WriteLine($"{crnumber}");
                     con = false;
                 }
             }
         }
-        public static void GetCreditCardDate()
+        public void GetCreditCardDate()
         {
             bool con = true;
-              while (con)
-              {
+            while (con)
+            {
                 Console.WriteLine("Please enter the expiration date (enter two digits for month and four for year): ");
                 int date = int.Parse(Console.ReadLine());
                 string datestring = date.ToString();
@@ -53,9 +59,9 @@ namespace TheBreakfastClub
                     Console.WriteLine("Thank you!");
                     con = false;
                 }
-              }
+            }
         }
-        public static void Getcreditcardcvv()
+        public void Getcreditcardcvv()
         {
             bool con = true;
             while (con)
@@ -70,43 +76,49 @@ namespace TheBreakfastClub
                 }
                 else
                 {
-                    Console.WriteLine("Thank you");
                     Console.WriteLine("We have received your payment.Thank you for your business");
                     con = false;
-                    break;
                 }
             }
         }
-         public static void CheckPayment()
-            {
-               
-                    Console.WriteLine("Please enter your check card number: ");
-                    decimal cknumber = decimal.Parse(Console.ReadLine());
-                     Console.WriteLine("Thank you");
-                 
-         }
-             public static void CashPayment()
-             {
-                 Console.WriteLine("How much cash do you want to insert: ");
-                double amount = double.Parse(Console.ReadLine());
-                 Order totalprice = new Order();
-                 double checktotal = totalprice.Total;
-                 if (checktotal < amount)
-                 {
-                     double a = amount - checktotal;
-                     Console.WriteLine(Math.Round(a, 2));
-                 }
-                 else
-                 {
-                     Console.WriteLine("You don`t have enough money");
+        public void Check(double grandTotal)
 
-                 }
-             }
-            
+        {
 
 
-  
+            Console.WriteLine("Please enter your check card number: ");
+            decimal cknumber = decimal.Parse(Console.ReadLine());
+            Console.WriteLine("Thank you a payment for {0} has been procesed", grandTotal);
+
         }
-    
-}
+        public void Cash(double grandTotal)
+        {
 
+            Console.WriteLine("How much cash do you want to insert: ");
+            string a = Console.ReadLine();
+            double amount = double.Parse(a);
+            //  double amount = double.Parse(Console.ReadLine());7
+
+
+            if (grandTotal < amount)
+            {
+                double change = amount - grandTotal;
+                Console.WriteLine("Her is your change: " + change.ToString("C2", CultureInfo.CurrentCulture));
+            }
+            else if (grandTotal == amount)
+            {
+                Console.WriteLine(" Payment Accepted.  Thank you");
+            }
+
+            else
+            {
+                Console.WriteLine("That's not enough money. you need {0}.  try Again", amount - grandTotal);
+                Console.WriteLine("How much cash do you want to insert: ");
+                a = Console.ReadLine();
+                amount = double.Parse(a);
+                //   amount = double.Parse(Console.ReadLine());
+
+            }
+        }
+    }
+}
