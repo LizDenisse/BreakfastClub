@@ -1,23 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections;
+using System;
 
-namespace TheBreakfastClub
+namespace BreakfastClub
 {
     class Program
     {
         static void Main(string[] args)
         {
-
-
-
-
-            BreakfastApp app = new BreakfastApp();
-            app.Run();
-
-
-
-
+            BreakfastClubApp breakfastClub = new BreakfastClubApp();
+            breakfastClub.RunApp();
         }
     }
 }
