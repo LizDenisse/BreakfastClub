@@ -1,33 +1,108 @@
-﻿
 using System;
 using System.Collections.Generic;
-​
+using System.Text;
+using System.Linq;
+using System.Globalization;
+
+
 namespace BreakfastClub
 {
-    class BreakfastClubApp
+    public class BreakfastClubApp
     {
-        List<string> BreakfastMenu = new List<string>();
-​
-​
-        public BreakfastClubApp()
+        List<Menu> menus = Menu.MenuItems();
+        Order order = new Order();
+        int input = 0;
+        string inp = "";
+
+        public void RunApp()
         {
-            Console.WriteLine("Welcome to the Breakfast Club.");
-​
+            Console.WriteLine("Welcome to the Breakfast Club ");
+            bool orderMore = true;
+            while (orderMore)
+            {
+                Console.WriteLine("\n Select a Number from the Menu ");
+                Console.WriteLine("_______________________________");
+                order.PrintMenu();
+                inp = Console.ReadLine();
+                input = int.Parse(inp);
+
+                if (input > 0 && input < menus.Count)
+                {
+                    Console.WriteLine(menus[input].Name + "  \n Description " + menus[input].Description);
+                    Console.WriteLine("do you want to buy this item? ");
+                    string b = Console.ReadLine().ToLower().Trim();
+
+                    if (b == "y")
+                    {
+                        if (input > 0 && input < menus.Count)
+                        {
+                            Console.WriteLine("How Many ?");
+                            string h = Console.ReadLine();
+                            int howMany = int.Parse(h);
+                            order.AddMenuItem(input, howMany);
+                            order.PrintCart();
+                            double a = order.GetGrandTotal();
+                            Console.WriteLine("your total is:" + a);
+                        }
+                    }
+                }
+                else
+                {
+                    order.PrintCart();
+
+                    Checkout();
+                    break;
+                }
+            }
         }
-​
-        public void GetOrder()
+        public void Checkout()
         {
-​
+            double grandTotal = order.GetGrandTotal();
+
+            Console.WriteLine("Ok, How would you like to pay?");
+            Console.WriteLine("1: Credit/Debit Card");
+            Console.WriteLine("2: Check");
+            Console.WriteLine("3: Cash");
+
+            string pay = Console.ReadLine();
+
+            Payment check = new Payment();
+            Payment card = new Payment();
+            Payment cash = new Payment();
+
+            if (pay == "Credit/Debit" || pay == "1")
+            {
+                Console.WriteLine("Cradit/Debit Card Payment:");
+                card.CreditCardPaymentNumber();
+                card.GetCreditCardDate();
+                card.Getcreditcardcvv();
+            }
+            else if (pay == "Check" || pay == "2")
+            {
+                Console.WriteLine("Check Payment:");
+                check.Check(grandTotal);
+            }
+            else if (pay == "Cash" || pay == "3")
+            {
+                Console.WriteLine("Cash Payment:");
+                cash.Cash(grandTotal);
+            }
+            else
+            {
+                Console.WriteLine("Please leave your information and fill-up pay later form!");
+                Console.WriteLine("Invalid entry please select 1-Card, 2- Check or 3- Cash ");
+                pay = Console.ReadLine();
+            }
+
+            Console.WriteLine("Good Bye, Come back soon");
         }
-​
-        public void PrintMenu()
-        {
-​
-        }
-​
-        public void PaymentProcess()
-        {
-​
-        }
+
     }
+
+
 }
+
+
+
+
+
