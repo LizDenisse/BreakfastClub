@@ -103,7 +103,7 @@ namespace BreakfastClub
             if (grandTotal < amount)
             {
                 double change = amount - grandTotal;
-                Console.WriteLine("Her is your change: " + change.ToString("C2", CultureInfo.CurrentCulture));
+                Console.WriteLine("Here is your change: " + change.ToString("C2", CultureInfo.CurrentCulture));
             }
             else if (grandTotal == amount)
             {
