@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace BreakfastClub
 {
@@ -6,7 +6,9 @@ namespace BreakfastClub
     {
         static void Main(string[] args)
         {
-            BreakfastClubApp breakfastclub = new BreakfastClubApp();
+            BreakfastClubApp breakfastClub = new BreakfastClubApp();
+            breakfastClub.RunApp();
         }
     }
 }
+
