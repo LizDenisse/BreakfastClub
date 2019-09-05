@@ -1,83 +1,128 @@
-﻿using System;
-using System.Collections;
+using System;
 using System.Collections.Generic;
-namespace TheBreakfastClub
+using System.Text;
+using System.Linq;
+using System.Globalization;
+
+
+namespace BreakfastClub
 {
-    public class BreakfastApp
+    public class BreakfastClubApp
     {
-        public BreakfastApp()
+        List<Menu> menus = Menu.MenuItems();
+        Order order = new Order();
+        int input = 0;
+        string inp = "";
+        int howMany = 0;
+
+        public void RunApp()
         {
-        }
-        public void Run()
-        {
-            bool co = true;
-           
-            List<Menu> menus = Menu.MenuItems();
+            Console.WriteLine("Welcome to the Breakfast Club ");
+        
 
-            Order order = new Order();
-
-         
-
-
-            while (co)
-            {
-                order.PrintMenu();
-
-                Console.WriteLine("Which Item would you like?");
-
-               string input = Console.ReadLine();
-                int i = int.Parse(input);
-                order.Cart(menus[i]);
-
-
-                Console.WriteLine("Would you like more?");
-                string answer = Console.ReadLine();
-
-
-
-                if (answer == "y")
+            bool orderMore = true;
+                while (orderMore)
                 {
-                    Console.Clear();
-                    continue;
+                    Console.WriteLine("\n Select a Number from the Menu ");
+                    order.PrintMenu();
+                    inp = Console.ReadLine();
+                    input = int.Parse(inp);
 
-                }
-                else
-                {
-                    order.PrintCart();
-                    Console.WriteLine("This is your cart to go!");
-                    Console.WriteLine( "Total: " + order.GetTotal());
-                    break;
-                }
-            }
+                    if (input >= 0 && input <= menus.Count)
+                    {
+                        Console.WriteLine(menus[input].Name + "  \n DESCRIPTION: " + menus[input].Description);
+                        Console.WriteLine("do you want to buy this item? Y/N ");
+                        string b = Console.ReadLine().ToLower().Trim();
 
-         
-            Console.WriteLine("How would you like to pay? Cash, Card, or Check: ");
-
-            string choice = Console.ReadLine();
-            try
-            {
-                if (choice == "Cash")
-                {
-                    Console.WriteLine("How much cash would you like to tender?");
-                    string amount = Console.ReadLine();
-                    double cash = double.Parse(amount);
-                    Payment.CashPayment(cash);
-                }else if (choice == "Card")
-                {
-                    Payment.CreditCardPaymentNumber();
-
-                }else if (choice == "Check")
-                {
-                    Payment.CheckPayment();
-                }
+                        while (b != "n" && b != "y")
+                        {
+                            Console.WriteLine("invalid entry.  please enter Y or N");
+                            b = Console.ReadLine().ToLower().Trim();
+                        }
+                        if (b == "y")
+                        {
+                            if (input > 0 && input < menus.Count)
+                            {
+                                Console.WriteLine("How Many ?");
+                                string h = Console.ReadLine();
+                                try
+                                {
+                                    howMany = int.Parse(h);
+                                }
+                                catch
+                                {
+                                    Console.WriteLine("You have not enter a number. please enter number ");
+                                    h = Console.ReadLine();
+                                    howMany = int.Parse(h);
+                                }
+                                order.AddMenuItem(input, howMany);
+                                order.PrintCart();
+                                double a = order.GetGrandTotal();
+                                Console.WriteLine("your total is:" + a);
+                            }
+                        }
                     }
-            catch (ArgumentException)
-            {
-                throw new Exception("Error. Please provide proper response.");
-            }
+                    else
+                    {
+                        order.PrintCart();
 
-
-
+                        Checkout();
+                        break;
+                    }
+                }
+         
+                       
+               
+               
         }
+        public void Checkout()
+        {
+            double grandTotal = order.GetGrandTotal();
+
+            Console.WriteLine("Ok, How would you like to pay?");
+            Console.WriteLine("1: Credit/Debit Card");
+            Console.WriteLine("2: Check");
+            Console.WriteLine("3: Cash");
+
+            string pay = Console.ReadLine().ToLower().Trim();
+
+            Payment check = new Payment();
+            Payment card = new Payment();
+            Payment cash = new Payment();
+
+            if (pay == "credit/debit" || pay == "1" || pay== "credit"|| pay=="debit")
+            {
+                Console.WriteLine("Cradit/Debit Card Payment:");
+                card.CreditCardPaymentNumber();
+                card.GetCreditCardDate();
+                card.Getcreditcardcvv();
+            }
+            else if (pay == "Check" || pay == "2")
+            {
+                Console.WriteLine("Check Payment:");
+                check.Check(grandTotal);
+            }
+            else if (pay == "Cash" || pay == "3")
+            {
+                Console.WriteLine("Cash Payment:");
+                cash.Cash(grandTotal);
+            }
+            else
+            {
+                Console.WriteLine("Please leave your information and fill-up pay later form!");
+                Console.WriteLine("Invalid entry please select 1-Card, 2- Check or 3- Cash ");
+                pay = Console.ReadLine();
+            }
+        Console.WriteLine("Good Bye, Come back soon");
+
     }
+
+    }
+
+
 }
+
+
+
+
+
