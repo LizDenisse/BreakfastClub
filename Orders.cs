@@ -16,12 +16,15 @@ namespace BreakfastClub
         public List<Order> cart = new List<Order>();
         public void PrintMenu()
         {
-            int i = 0;
+
+            int i = -1;
+            Console.WriteLine("".ToString().PadRight(4) + " DISH ".PadRight(25, '_') + " CATEGORY".PadLeft(10, '_') + " PRICE".PadLeft(15, '_'));
+            Console.WriteLine("");
 
             foreach (var n in menus)
             {
                 i++;
-                Console.WriteLine(i + ". " + n.Name + "\t| " + n.Category + " \t |" + n.Price);
+                Console.WriteLine((i + "-").ToString().PadRight(4) + n.Name.PadRight(25, '_') + n.Category.PadLeft(10, '_') + n.Price.ToString("C", CultureInfo.CurrentCulture).PadLeft(15, '_'));
             }
             Console.WriteLine(menus.Count + 1 + ". End Order and Procede to payment");
         }
