@@ -4,128 +4,125 @@ using System.Text;
 using System.Linq;
 using System.Globalization;
 
+
 namespace BreakfastClub
 {
-    public class MenuItem
-    {
-        public string OrderName;
-        public double OrderPrice;
-    }
-    public class Payment
+    public class BreakfastClubApp
     {
         List<Menu> menus = Menu.MenuItems();
-        List<MenuItem> cart = new List<MenuItem>();
-        public List<MenuItem> Receipt(int input, int howMany)
+        Order order = new Order();
+        int input = 0;
+        string inp = "";
+        int howMany = 0;
+
+        public void RunApp()
         {
+            Console.WriteLine("Welcome to the Breakfast Club ");
+        
 
-            for (int i = 0; i < howMany; i++)
-            {
-                cart.Add(new MenuItem { OrderName = menus[input].Name, OrderPrice = menus[input].Price });
-            }
-            return cart;
+            bool orderMore = true;
+                while (orderMore)
+                {
+                    Console.WriteLine("\n Select a Number from the Menu ");
+                    order.PrintMenu();
+                    inp = Console.ReadLine();
+                    input = int.Parse(inp);
 
+                    if (input >= 0 && input <= menus.Count)
+                    {
+                        Console.WriteLine(menus[input].Name + "  \n DESCRIPTION: " + menus[input].Description);
+                        Console.WriteLine("do you want to buy this item? Y/N ");
+                        string b = Console.ReadLine().ToLower().Trim();
 
+                        while (b != "n" && b != "y")
+                        {
+                            Console.WriteLine("invalid entry.  please enter Y or N");
+                            b = Console.ReadLine().ToLower().Trim();
+                        }
+                        if (b == "y")
+                        {
+                            if (input > 0 && input < menus.Count)
+                            {
+                                Console.WriteLine("How Many ?");
+                                string h = Console.ReadLine();
+                                try
+                                {
+                                    howMany = int.Parse(h);
+                                }
+                                catch
+                                {
+                                    Console.WriteLine("You have not enter a number. please enter number ");
+                                    h = Console.ReadLine();
+                                    howMany = int.Parse(h);
+                                }
+                                order.AddMenuItem(input, howMany);
+                                order.PrintCart();
+                                double a = order.GetGrandTotal();
+                                Console.WriteLine("your total is:" + a);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        order.PrintCart();
+
+                        Checkout();
+                        break;
+                    }
+                }
+         
+                       
+               
+               
         }
-        public void CreditCardPaymentNumber(/*string crnumber,string date,string cvv*/)
+        public void Checkout()
         {
-            bool con = true;
-            while (con)
+            double grandTotal = order.GetGrandTotal();
+
+            Console.WriteLine("Ok, How would you like to pay?");
+            Console.WriteLine("1: Credit/Debit Card");
+            Console.WriteLine("2: Check");
+            Console.WriteLine("3: Cash");
+
+            string pay = Console.ReadLine().ToLower().Trim();
+
+            Payment check = new Payment();
+            Payment card = new Payment();
+            Payment cash = new Payment();
+
+            if (pay == "credit/debit" || pay == "1" || pay== "credit"|| pay=="debit")
             {
-                Console.WriteLine("Please enter your credit card number: ");
-                decimal crnumber = decimal.Parse(Console.ReadLine());
-                string crnumberstring = crnumber.ToString();
-                if (crnumberstring.Length != 16)
-                {
-                    Console.WriteLine("You did not enter a valid credit card number. Please try again");
-                    con = true;
-                }
-                else
-                {
-                    Console.WriteLine("Thank you!");
-                    con = false;
-                }
+                Console.WriteLine("Cradit/Debit Card Payment:");
+                card.CreditCardPaymentNumber();
+                card.GetCreditCardDate();
+                card.Getcreditcardcvv();
             }
-        }
-        public void GetCreditCardDate()
-        {
-            bool con = true;
-            while (con)
+            else if (pay == "Check" || pay == "2")
             {
-                Console.WriteLine("Please enter the expiration date (enter two digits for month and four for year): ");
-                int date = int.Parse(Console.ReadLine());
-                string datestring = date.ToString();
-                string substring1 = datestring.Substring(0, 2);
-                int datesubstring1 = Int32.Parse(substring1);
-                string substring2 = datestring.Substring(2);
-                int datesubstring2 = Int32.Parse(substring2);
-
-                if (datestring.Length != 6 || datesubstring1 > 12 || datesubstring2 > 3000 || datesubstring2 < 1900 || datesubstring1 < 0)
-                {
-                    Console.WriteLine("You did not enter a valid date.Please try again");
-                    con = true;
-                }
-                else
-                {
-                    Console.WriteLine("Thank you!");
-                    con = false;
-                }
+                Console.WriteLine("Check Payment:");
+                check.Check(grandTotal);
             }
-        }
-        public void Getcreditcardcvv()
-        {
-            bool con = true;
-            while (con)
+            else if (pay == "Cash" || pay == "3")
             {
-                Console.WriteLine("Please enter the number on the back of your card(cvv): ");
-                int cvv = int.Parse(Console.ReadLine());
-                string cvvstring = cvv.ToString();
-                if (cvvstring.Length != 3)
-                {
-                    Console.WriteLine("You did not enter a cvv number.Please try again");
-                    con = true;
-                }
-                else
-                {
-                    Console.WriteLine("We have received your payment.Thank you for your business");
-                    con = false;
-                }
+                Console.WriteLine("Cash Payment:");
+                cash.Cash(grandTotal);
             }
-        }
-        public void CheckPayment()
-        {
-            Order totalprice = new Order();
-            double checktotal = totalprice.GetTotal();
-
-            Console.WriteLine("Please enter your check card number: ");
-            decimal cknumber = decimal.Parse(Console.ReadLine());
-            Console.WriteLine("Thank you a payment for {0} has been procesed", checktotal);
-
-        }
-        public void CashPayment()
-        {
-            Order total = new Order();
-            double checktotal = total.GetTotal();
-            Console.WriteLine("How much cash do you want to insert: ");
-            double amount = double.Parse(Console.ReadLine());
-
-
-            if (checktotal < amount)
-            {
-                double change = amount - checktotal;
-                Console.WriteLine("Her is your change: " + change.ToString("C2", CultureInfo.CurrentCulture));
-            }
-            if (checktotal == amount)
-            {
-                Console.WriteLine(" Payment Accepted.  Thank you");
-            }
-
             else
             {
-                Console.WriteLine("That's not enough money. you need {0}.  try Again", amount - checktotal);
-                Console.WriteLine("How much cash do you want to insert: ");
-                amount = double.Parse(Console.ReadLine());
-
+                Console.WriteLine("Please leave your information and fill-up pay later form!");
+                Console.WriteLine("Invalid entry please select 1-Card, 2- Check or 3- Cash ");
+                pay = Console.ReadLine();
             }
-        }
+        Console.WriteLine("Good Bye, Come back soon");
+
     }
+
+    }
+
+
 }
+
+
+
+
+
