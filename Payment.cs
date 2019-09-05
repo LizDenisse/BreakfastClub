@@ -1,17 +1,22 @@
-﻿using System;
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using System.Text;
-namespace TheBreakfastClub
+using System.Linq;
+using System.Globalization;
+
+namespace BreakfastClub
 {
+    public class MenuItem
+    {
+        public string OrderName;
+        public double OrderPrice;
+    }
     public class Payment
     {
+        List<Menu> menus = Menu.MenuItems();
+        List<MenuItem> cart = new List<MenuItem>();
 
-        public Payment()
-        {
-
-        }
-        public static void CreditCardPaymentNumber(/*string crnumber,string date,string cvv*/)
+        public void CreditCardPaymentNumber(/*string crnumber,string date,string cvv*/)
         {
             bool con = true;
             while (con)
@@ -21,19 +26,17 @@ namespace TheBreakfastClub
                 string crnumberstring = crnumber.ToString();
                 if (crnumberstring.Length != 16)
                 {
-                    Console.WriteLine("You did not enter a valid credit card number.Please try again");
+                    Console.WriteLine("You did not enter a valid credit card number. Please try again");
                     con = true;
-
                 }
                 else
                 {
                     Console.WriteLine("Thank you!");
-                    // Console.WriteLine($"{crnumber}");
                     con = false;
                 }
             }
         }
-        public static void GetCreditCardDate()
+        public void GetCreditCardDate()
         {
             bool con = true;
             while (con)
@@ -58,7 +61,7 @@ namespace TheBreakfastClub
                 }
             }
         }
-        public static void Getcreditcardcvv()
+        public void Getcreditcardcvv()
         {
             bool con = true;
             while (con)
@@ -73,41 +76,49 @@ namespace TheBreakfastClub
                 }
                 else
                 {
-                    Console.WriteLine("Thank you");
                     Console.WriteLine("We have received your payment.Thank you for your business");
                     con = false;
-                    break;
                 }
             }
         }
-        public static void CheckPayment()
+        public void Check(double grandTotal)
+
         {
+
 
             Console.WriteLine("Please enter your check card number: ");
             decimal cknumber = decimal.Parse(Console.ReadLine());
-            Console.WriteLine("Thank you");
+            Console.WriteLine("Thank you a payment for {0} has been procesed", grandTotal);
 
         }
-        public static void CashPayment(double amount)
+        public void Cash(double grandTotal)
         {
+
             Console.WriteLine("How much cash do you want to insert: ");
-            amount = double.Parse(Console.ReadLine());
-            Order totalprice = new Order();
-            double checktotal = totalprice.Total;
-            if (checktotal < amount)
+            string a = Console.ReadLine();
+            double amount = double.Parse(a);
+            //  double amount = double.Parse(Console.ReadLine());7
+
+
+            if (grandTotal < amount)
             {
-                double a = amount - checktotal;
-                Console.WriteLine(Math.Round(a, 2));
+                double change = amount - grandTotal;
+                Console.WriteLine("Her is your change: " + change.ToString("C2", CultureInfo.CurrentCulture));
             }
+            else if (grandTotal == amount)
+            {
+                Console.WriteLine(" Payment Accepted.  Thank you");
+            }
+
             else
             {
-                Console.WriteLine("You don`t have enough money");
+                Console.WriteLine("That's not enough money. you need {0}.  try Again", amount - grandTotal);
+                Console.WriteLine("How much cash do you want to insert: ");
+                a = Console.ReadLine();
+                amount = double.Parse(a);
+                //   amount = double.Parse(Console.ReadLine());
 
             }
         }
-
-
-
-
     }
 }
