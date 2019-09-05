@@ -1,90 +1,74 @@
-﻿using System;
-using System.Threading;
-using System.Collections;
+using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Linq;
+using System.Globalization;
 
-namespace TheBreakfastClub
+namespace BreakfastClub
 {
-
     public class Order
     {
+        public string OrderName { get; set; }
+        public double OrderPrice { get; set; }
+
+
         List<Menu> menus = Menu.MenuItems();
-        List<Menu> cart = new List<Menu>();
-      public double Total { get; set; }
-        
-
-
-
-
-        public Order()
-        {
-
-        }
-        public double GetTotal()
-        {
-
-            /* foreach(Menu c in cart)
-             {
-                 Total = Total + c.Price;
-             }
-             return Total;*/
-
-             Total = cart.Sum(cart => cart.Price);
-            return Total;
-        }
-
-        public void Cart(Menu m)
-        {
-
-            Console.WriteLine("Ok! adding that item to the list");
-
-            cart.Add(m);
-
-        }
-
-        public void PrintCart()
-        {
-            Console.WriteLine("Your cart below!");
-            foreach (Menu n in cart)
-            {
-                Console.WriteLine();
-                Console.WriteLine();
-                Console.WriteLine();
-
-                
-              
-                Console.WriteLine(n.Name + " \t " + n.Price);
-            }
-           
-            
-        }
-
-
+        public List<Order> cart = new List<Order>();
         public void PrintMenu()
         {
-            int i = 0;
+
+            int i = -1;
+            Console.WriteLine("".ToString().PadRight(4)+" DISH ".PadRight(25, '_') +  " CATEGORY".PadLeft(10, '_') + " PRICE".PadLeft(15, '_'));
+            Console.WriteLine("");
+
             foreach (var n in menus)
             {
                 i++;
-                Console.WriteLine(i + "." + n.Name + " \t " + n.Price);
-
+                Console.WriteLine((i + "-").ToString().PadRight(4) + n.Name.PadRight(25,'_')+n.Category.PadLeft(10,'_')+ n.Price.ToString("C", CultureInfo.CurrentCulture).PadLeft(15, '_'));
             }
-            
-        }
-
-
-
-
-
-
-        public class MenuOrder
+            Console.WriteLine(menus.Count +1 +". End Order and Procede to payment");
+    }
+        public List<Order> AddMenuItem(int input, int howMany)
         {
-            public object OrderName { get; set; }
-            public object OrderPrice { get; set; }
+            for (int i = 0; i < howMany; i++)
+            {
+                cart.Add(new Order { OrderName = menus[input].Name, OrderPrice = menus[input].Price });
+            }
+            return cart;
         }
 
+        public double GetGrandTotal()
+        {
+            double SubTotal = cart.Sum(x => x.OrderPrice);
+            double SalesTax = SubTotal * 0.07;
 
+            double grandTotal = SubTotal + SalesTax;
+
+            return grandTotal;
+
+        }
+        public void PrintCart()
+        {
+            double SubTotal = cart.Sum(cart => cart.OrderPrice);
+            double SalesTax = SubTotal * 0.07;
+            double grandTotal = SubTotal + SalesTax;
+
+            int i = 0;
+
+            Console.WriteLine("Cart:");
+            foreach (Order item in cart)
+            {
+                i++;
+                Console.WriteLine((i + "-").ToString().PadRight(4) + item.OrderName.PadRight(25, ' ') + item.OrderPrice.ToString("C", CultureInfo.CurrentCulture).PadLeft(15, ' '));
+
+              //  Console.WriteLine(i + "." + item.OrderName.PadLeft(25,' ')  + item.OrderPrice.ToString("C", CultureInfo.CurrentCulture).PadLeft(15, '_'));
+            }
+            Console.WriteLine("________________________________");
+            Console.WriteLine("\n Sub Total: " + SubTotal.ToString("C2", CultureInfo.CurrentCulture));
+            Console.WriteLine("\n Tax: " + SalesTax.ToString("C2", CultureInfo.CurrentCulture));
+            Console.WriteLine("\n Grand Total: " + grandTotal.ToString("C2", CultureInfo.CurrentCulture));
+            Console.WriteLine("________________________________");
+        }
 
     }
 }
