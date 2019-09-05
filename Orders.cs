@@ -18,16 +18,16 @@ namespace BreakfastClub
         {
 
             int i = -1;
-            Console.WriteLine("".ToString().PadRight(4) + " DISH ".PadRight(25, '_') + " CATEGORY".PadLeft(10, '_') + " PRICE".PadLeft(15, '_'));
+            Console.WriteLine("".ToString().PadRight(4)+" DISH ".PadRight(25, '_') +  " CATEGORY".PadLeft(10, '_') + " PRICE".PadLeft(15, '_'));
             Console.WriteLine("");
 
             foreach (var n in menus)
             {
                 i++;
-                Console.WriteLine((i + "-").ToString().PadRight(4) + n.Name.PadRight(25, '_') + n.Category.PadLeft(10, '_') + n.Price.ToString("C", CultureInfo.CurrentCulture).PadLeft(15, '_'));
+                Console.WriteLine((i + "-").ToString().PadRight(4) + n.Name.PadRight(25,'_')+n.Category.PadLeft(10,'_')+ n.Price.ToString("C", CultureInfo.CurrentCulture).PadLeft(15, '_'));
             }
-            Console.WriteLine(menus.Count + 1 + ". End Order and Procede to payment");
-        }
+            Console.WriteLine(menus.Count +1 +". End Order and Procede to payment");
+    }
         public List<Order> AddMenuItem(int input, int howMany)
         {
             for (int i = 0; i < howMany; i++)
@@ -59,7 +59,9 @@ namespace BreakfastClub
             foreach (Order item in cart)
             {
                 i++;
-                Console.WriteLine(i + "." + item.OrderName + "\t " + item.OrderPrice);
+                Console.WriteLine((i + "-").ToString().PadRight(4) + item.OrderName.PadRight(25, ' ') + item.OrderPrice.ToString("C", CultureInfo.CurrentCulture).PadLeft(15, ' '));
+
+              //  Console.WriteLine(i + "." + item.OrderName.PadLeft(25,' ')  + item.OrderPrice.ToString("C", CultureInfo.CurrentCulture).PadLeft(15, '_'));
             }
             Console.WriteLine("________________________________");
             Console.WriteLine("\n Sub Total: " + SubTotal.ToString("C2", CultureInfo.CurrentCulture));
@@ -67,6 +69,7 @@ namespace BreakfastClub
             Console.WriteLine("\n Grand Total: " + grandTotal.ToString("C2", CultureInfo.CurrentCulture));
             Console.WriteLine("________________________________");
         }
+
     }
 }
 
