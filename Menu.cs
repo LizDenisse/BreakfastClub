@@ -20,7 +20,7 @@ namespace BreakfastClub
         static public List<Menu> MenuItems()
         {
 
-            string item1Detail = "Stuffed with ripe avocado, lean bacon, bell pepper, a blend of Monterey Jack and Cheddar cheeses and topped with sour cream and chives. Served with our homemade salsa. ";
+            string item1Detail = "Stuffed  with ripe avocado, lean bacon, bell pepper, a blend of Monterey Jack and Cheddar cheeses and topped with sour cream and chives. Served with our homemade salsa. ";
             Menu item1 = new Menu("AWESOME AVOCADO", "Omelette", item1Detail, 15.10);
 
             string item2Detail = "Egg whites, fresh green pepper, zucchini, mushrooms, onions, tomatoes, a blend of Monterey Jack and Cheddar cheeses and topped with chives.";
