@@ -11,7 +11,7 @@ namespace BreakfastClub
         public BreakfastClubApp()
         {
             Console.WriteLine("Welcome to the Breakfast Club.");
-            // Run();
+            Run();
             Checkout();
         }
 
@@ -54,6 +54,7 @@ namespace BreakfastClub
                 }
 
             }
+            //Checkout();
 
         }
 
