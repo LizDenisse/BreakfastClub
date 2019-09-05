@@ -18,10 +18,7 @@ namespace BreakfastClub
         public void RunApp()
         {
             Console.WriteLine("Welcome to the Breakfast Club ");
-            bool another = true;
-
-            while (another)
-            { 
+           
 
             bool orderMore = true;
                 while (orderMore)
@@ -73,18 +70,10 @@ namespace BreakfastClub
                         break;
                     }
                 }
-                    Console.WriteLine("Do you whish to make another other? y/n  ");
-                    string c = Console.ReadLine().Trim().ToLower();
-                    while (c!="y" || c!="n")
-                    {
-                        Console.WriteLine("invalid entry.  please enter Y or N");
-                        c = Console.ReadLine().ToLower().Trim();
-                    }
-                    if (c=="n")
-                    {
+                    
                         Console.WriteLine("Good Bye, Come back soon");
-                        another = false;
-                    }         
+                
+                          
             }
         }
         public void Checkout()
@@ -124,7 +113,9 @@ namespace BreakfastClub
                 Console.WriteLine("Please leave your information and fill-up pay later form!");
                 Console.WriteLine("Invalid entry please select 1-Card, 2- Check or 3- Cash ");
                 pay = Console.ReadLine();
+                
             }
+            Console.WriteLine("Good Bye, Come back soon");
            
         }
 
