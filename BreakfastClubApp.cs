@@ -1,101 +1,105 @@
-﻿
 using System;
 using System.Collections.Generic;
 
+
 namespace BreakfastClub
 {
-    class BreakfastClubApp
+    public class BreakfastClubApp
     {
+        List<Menu> menus = Menu.MenuItems();
+        Order order = new Order();
+        int input = 0;
+        string inp = "";
 
-
-        public BreakfastClubApp()
+        public void RunApp()
         {
-            Console.WriteLine("Welcome to the Breakfast Club.");
-            Run();
-            Checkout();
-        }
-
-
-        public void Run()
-        {
-            bool ordercont = true;
-            List<Menu> menus = Menu.MenuItems();
-
-            Console.WriteLine("What do you like to have for your breakfast today?");
-            Console.WriteLine();
-            Order order = new Order();
-
-            while (ordercont)
+            Console.WriteLine("Welcome to the Breakfast Club ");
+            bool orderMore = true;
+            while (orderMore)
             {
+                Console.WriteLine("\n Select a Number from the Menu ");
+                Console.WriteLine("_______________________________");
                 order.PrintMenu();
-                Console.WriteLine();
-                Console.WriteLine("Which item would you like?");
-                string input = Console.ReadLine();
-                int i = int.Parse(input);
-                order.Cart(menus[i]);
-                Console.WriteLine();
+                inp = Console.ReadLine();
+                input = int.Parse(inp);
 
-                Console.WriteLine("Would you like to have more item? Y/N");
-                String answer = Console.ReadLine();
-
-                if (answer == "y" || answer == "yes")
+                if (input > 0 && input < menus.Count)
                 {
-                    Console.Clear();
-                    continue;
-                }
+                    Console.WriteLine(menus[input].Name + "  \n Description " + menus[input].Description);
+                    Console.WriteLine("Do you want to buy this item? Y/N ");
+                    string b = Console.ReadLine().ToLower().Trim();
 
+                    if (b == "y")
+                    {
+                        if (input > 0 && input < menus.Count)
+                        {
+                            Console.WriteLine("How Many?");
+                            string h = Console.ReadLine();
+                            int howMany = int.Parse(h);
+                            order.AddMenuItem(input, howMany);
+                            order.PrintCart();
+                            double a = order.GetGrandTotal();
+                            Console.WriteLine("Your total is: " + a);
+                        }
+                    }
+                }
                 else
                 {
                     order.PrintCart();
-                    Console.WriteLine("You have ordered:");
 
-                    Console.WriteLine(order.Total);
-                    ordercont = false;
+                    Checkout();
+                    break;
                 }
-
             }
-            //Checkout();
-
         }
-
         public void Checkout()
         {
+            double grandTotal = order.GetGrandTotal();
+
             Console.WriteLine("Ok, How would you like to pay?");
-            Console.WriteLine("Please select a payment method (1-3)");
             Console.WriteLine("1: Credit/Debit Card");
             Console.WriteLine("2: Check");
             Console.WriteLine("3: Cash");
-            Console.WriteLine();
-            string pay = Console.ReadLine().Trim().ToLower();
+
+            string pay = Console.ReadLine();
+
+            Payment check = new Payment();
+            Payment card = new Payment();
+            Payment cash = new Payment();
 
             if (pay == "Credit/Debit" || pay == "1")
             {
                 Console.WriteLine("Cradit/Debit Card Payment:");
-                Payment.CreditCardPaymentNumber();
-                Payment.GetCreditCardDate();
-                Payment.Getcreditcardcvv();
+                card.CreditCardPaymentNumber();
+                card.GetCreditCardDate();
+                card.Getcreditcardcvv();
             }
-
             else if (pay == "Check" || pay == "2")
             {
                 Console.WriteLine("Check Payment:");
-                Payment.CheckPayment();
+                check.Check(grandTotal);
             }
             else if (pay == "Cash" || pay == "3")
             {
                 Console.WriteLine("Cash Payment:");
-                Payment.CashPayment(12);
+                cash.Cash(grandTotal);
             }
             else
             {
                 Console.WriteLine("Please leave your information and fill-up pay later form!");
+                Console.WriteLine("Invalid entry please select 1-Card, 2- Check or 3- Cash ");
+                pay = Console.ReadLine();
             }
-        }
 
+            Console.WriteLine("Good Bye, Come back soon");
+        }
 
     }
 
 
-
 }
+
+
+
+
 
